@@ -1,0 +1,114 @@
+// $baseUrl: "https://morefun-active.oss-cn-beijing.aliyuncs.com/2023_LEGO_CHILDREN_DAY";
+//设置背景全覆盖
+@mixin set_background($url) {
+  background: {
+    image: url($url);
+    size: cover;
+    repeat: no-repeat;
+  }
+}
+//margin水平居中
+@mixin margin_center($top) {
+  margin: 0 auto;
+  margin-top: $top;
+}
+
+@mixin custom_position($left, $top) {
+  position: absolute;
+  left: $left;
+  top: $top;
+}
+//水平居中
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color:red;
+}
+.position-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+//flex水平垂直居中
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//flex垂直两侧对齐 侧轴居中
+.flex-col-bt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+//flex水平两侧对齐 侧轴居中
+.flex-row-bt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+//flex垂直两侧对齐
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+//flex水平两侧对齐
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.background-size {
+  background: {
+    position: center;
+    size: 100% 100%;
+    repeat: no-repeat;
+  }
+}
+
+.popup-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.ani-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.ani-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
+}
+
+//透明度渐现
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.8);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

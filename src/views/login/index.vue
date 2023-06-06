@@ -8,27 +8,13 @@
           <h1>Hello</h1>
           <h2>欢迎来到硅谷甄选</h2>
           <el-form-item prop="username">
-            <el-input
-              :prefix-icon="User"
-              v-model="loginForm.username"
-            ></el-input>
+            <el-input :prefix-icon="User" v-model="loginForm.username"></el-input>
           </el-form-item>
           <el-form-item prop="password">
-            <el-input
-              type="password"
-              :prefix-icon="Lock"
-              v-model="loginForm.password"
-              show-password
-            ></el-input>
+            <el-input type="password" :prefix-icon="Lock" v-model="loginForm.password" show-password></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button
-              :loading="loading"
-              class="login_btn"
-              type="primary"
-              size="default"
-              @click="login"
-            >
+            <el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">
               登录
             </el-button>
           </el-form-item>
@@ -43,8 +29,10 @@ import { User, Lock } from '@element-plus/icons-vue'
 import useUserStore from '@/store/modules/user'
 import { useRouter } from 'vue-router'
 import { ElNotification } from 'element-plus'
-let useStore = useUserStore()
 import { ref, reactive } from 'vue'
+//引入获取当前时间
+import {getTime} from '@/utils/time'
+let useStore = useUserStore()
 //定义变量控制按钮加载效果
 let loading = ref(false)
 //获取路由器
@@ -62,7 +50,8 @@ const login = async () => {
     //登录成功提示信息
     ElNotification({
       type: 'success',
-      message: '登录成功',
+      message: '欢迎回来',
+      title:`Hi,${getTime()}好`
     })
   } catch (error) {
     ElNotification({
@@ -73,6 +62,7 @@ const login = async () => {
     loading.value = false
   }
 }
+
 </script>
 <style lang="scss" scoped>
 .login_container {

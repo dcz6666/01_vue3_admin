@@ -8,12 +8,15 @@ import type { loginForm, loginResponseData } from '@/api/user/type'
 import type { UserState } from './types/type'
 //引入操作本地存储的工具方法
 import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
+//引入路由（常量路由）
+import {constantRoute} from '@/router/routes';
 
 //创建用户小仓库
 let useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN(),
+      menuRoutes:constantRoute
     }
   },
   //异步|逻辑地方

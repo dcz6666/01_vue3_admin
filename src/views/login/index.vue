@@ -44,9 +44,7 @@ let loginForm = reactive({ username: 'admin', password: 'atguigu123' })
 
 //登录按钮回调
 const login = async () => {
-  let a = await loginForms.value.validate()
-    console.log("loginForms1",a);
-
+  await loginForms.value.validate()
   loading.value = true
   try {
     await useStore.userLogin(loginForm)
@@ -71,7 +69,7 @@ const login = async () => {
 //定义表单校验需要配置对象
 const rules = {
   username: [
-    { min: 6, max: 10, message: '账号长度至少6位', trigger: 'change' },
+    { min: 5, max: 10, message: '账号长度至少6位', trigger: 'change' },
   ],
   password: [
     { min: 6, max: 15, message: '密码长度至少6位', trigger: 'change' },

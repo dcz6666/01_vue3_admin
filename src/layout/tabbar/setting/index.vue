@@ -2,12 +2,12 @@
   <el-button size="small" icon="Refresh" circle @click="updateRefsh"></el-button>
   <el-button size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
   <el-button size="small" icon="Setting" circle></el-button>
-  <img src="../../../../public/logo.png" alt="" style="width: 24px; height: 24px" />
+  <img :src="userStore.avatar" alt="" style="width: 24px; height: 24px; margin:0px 10px;border-radius:50%;" />
   <el-dropdown>
-    <el-button>
-      admin
+    <span class="el-dropdown-link">
+      {{userStore.username}}
       <el-icon class="el-icon--right"><arrow-down /></el-icon>
-    </el-button>
+    </span>
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item>Action 1</el-dropdown-item>
@@ -20,6 +20,8 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import useLayOutSettingStore from '@/store/modules/setting'
+import useUserStore from '@/store/modules/user'
+let userStore = useUserStore()
 let layOutSettingStore = useLayOutSettingStore()
 //刷新按钮点击回调
 const updateRefsh = () => {

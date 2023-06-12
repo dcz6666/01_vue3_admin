@@ -32,7 +32,7 @@ export const constantRoute = [
                 meta: {
                     title: '首页',
                     hidden: false,
-                    icon: "Comment"
+                    icon: "HomeFilled"
                 },
             },
         ],

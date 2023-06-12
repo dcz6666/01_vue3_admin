@@ -3,6 +3,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive,onMounted } from 'vue'
+import useUserStore from '@/store/modules/user'
+let useStore = useUserStore()
+  onMounted(()=>{
+    useStore.userInfo()
+  })
 </script>
 <style scoped></style>

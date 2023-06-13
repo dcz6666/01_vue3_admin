@@ -7,7 +7,7 @@ import type { loginForm, loginResponseData } from '@/api/user/type'
 
 import type { UserState } from './types/type'
 //引入操作本地存储的工具方法
-import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
+import { SET_TOKEN, GET_TOKEN ,REMOVE_TOKEN} from '@/utils/token'
 //引入路由（常量路由）
 import {constantRoute} from '@/router/routes';
 
@@ -44,7 +44,14 @@ let useUserStore = defineStore('User', {
         let {avatar,username}=result.data.checkUser;
         this.username=username
         this.avatar=avatar
+      }else{
+
       }
+    },
+    async userLogout(){
+      this.username=''
+      this.avatar=""
+      this.token= REMOVE_TOKEN()
     }
   },
   getters: {},

@@ -21,4 +21,7 @@ app.use(ElementPlus, {
 app.use(gloalComponent)
 app.use(pinia)
 app.use(router)
+
+//引入路由鉴权文件
+import './permission'
 app.mount('#app')

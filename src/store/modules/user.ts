@@ -1,24 +1,24 @@
 // 创建用户相关的小仓库
 import { defineStore } from 'pinia'
 //引入接口
-import { reqLogin, userInfo} from '@/api/user'
+import { reqLogin, userInfo } from '@/api/user'
 
-import type { loginForm, loginResponseData } from '@/api/user/type'
+import type { loginForm, loginResponseData,userResponseData } from '@/api/user/type'
 
 import type { UserState } from './types/type'
 //引入操作本地存储的工具方法
-import { SET_TOKEN, GET_TOKEN ,REMOVE_TOKEN} from '@/utils/token'
+import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 //引入路由（常量路由）
-import {constantRoute} from '@/router/routes';
+import { constantRoute } from '@/router/routes'
 
 //创建用户小仓库
 let useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN(),
-      menuRoutes:constantRoute,
-      username:'',
-      avatar:""
+      menuRoutes: constantRoute,
+      username: '',
+      avatar: '',
     }
   },
   //异步|逻辑地方
@@ -37,22 +37,25 @@ let useUserStore = defineStore('User', {
       }
     },
 
-    async userInfo(){
+    async userInfo() {
       let result = await userInfo();
-      console.log("result===userInfo1",result)
-      if(result.code==200){
-        let {avatar,username}=result.data.checkUser;
-        this.username=username
-        this.avatar=avatar
-      }else{
-
+      console.log('result===userInfo1', result)
+      if (result.code == 200) {
+        let { avatar, username } = result.data.checkUser;
+        this.username = username;
+        this.avatar = avatar;
+        return 'ok';
+      } else {
+        return Promise.reject("后去用户信息失败");
       }
     },
-    async userLogout(){
-      this.username=''
-      this.avatar=""
-      this.token= REMOVE_TOKEN()
-    }
+
+
+    async userLogout() {
+      this.username = ''
+      this.avatar = ''
+      this.token = REMOVE_TOKEN()
+    },
   },
   getters: {},
 })

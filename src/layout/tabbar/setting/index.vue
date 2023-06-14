@@ -46,10 +46,10 @@ const fullScreen = () => {
   }
 }
 
-const logout = () => {
+const logout = async () => {
   //1、需要向服务器发 退出登录的接口
   //2、清空用户数据
-  userStore.userLogout()
+  await userStore.userLogout()
   $router.push({path:'/login',query:{redirect:$route.path}})
 }
 </script>

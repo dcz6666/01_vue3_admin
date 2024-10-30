@@ -3,7 +3,9 @@ import { defineStore } from 'pinia'
 //引入接口
 import { reqLogin, reqUserInfo, reqLogout } from '@/api/user'
 
-import type { UserState } from './types/type'
+import type { loginFormData, loginResponseData, userInfoResponseData } from '@/api/user/type'
+
+import type { UserState } from './types/type.ts'
 //引入操作本地存储的工具方法
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 //引入路由（常量路由）
@@ -22,8 +24,8 @@ let useUserStore = defineStore('User', {
   //异步|逻辑地方
   actions: {
     //用户登录的方法
-    async userLogin(data: any) {
-      let result: any = await reqLogin(data)
+    async userLogin(data: loginFormData) {
+      let result: loginResponseData = await reqLogin(data)
       console.log('===result===', result)
       if (result.code == 200) {
         this.token = result.data as string
@@ -37,13 +39,13 @@ let useUserStore = defineStore('User', {
     },
     //获取用户信息
     async userInfo() {
-      let result = await reqUserInfo()
+      let result: userInfoResponseData = await reqUserInfo()
       console.log('获取用户信息', result)
       if (result.code == 200) {
         let { avatar, name } = result.data
-        this.username = name
-        this.avatar = avatar
-        return 'ok'
+        this.username = name;
+        this.avatar = avatar;
+        return 'ok';
       } else {
         return Promise.reject(new Error(result.message))
       }
@@ -51,7 +53,7 @@ let useUserStore = defineStore('User', {
 
     //退出登录
     async userLogout() {
-      let result = await reqLogout()
+      let result: any = await reqLogout()
       console.log('退出登录', result)
       if (result.code == 200) {
         this.username = ''

@@ -26,6 +26,7 @@ request.interceptors.response.use(
     //处理网络错误
     let msg = ''
     let status = error.response.status
+  
     switch (status) {
       case 401:
         msg = 'token过期'

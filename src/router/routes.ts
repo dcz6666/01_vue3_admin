@@ -105,7 +105,7 @@ export const constantRoute = [
                 component: () => import('@/views/product/trademark/index.vue'),
                 name: 'Trademark',
                 meta: {
-                    title: '用户管理',
+                    title: '品牌管理',
                     icon: "ShoppingCartFull"
                 },
             },

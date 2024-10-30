@@ -1,8 +1,10 @@
 // 引入项目中全部的全局组件
-import SvgIcon from './SvgIcon/index.vue'
+import SvgIcon from './SvgIcon/index.vue';
+
+import Category from './Category/index.vue';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 //全局对象
-const allGloablComponent:any = { SvgIcon }
+const allGloablComponent:any = { SvgIcon ,Category}
 //对外暴露插件对象
 export default {
   //务必交install方法
